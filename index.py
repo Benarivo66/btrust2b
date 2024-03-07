@@ -14,7 +14,7 @@ def gen_redeem_script(preimage):
     # compute redeem script for preimage
     # byte encoding for "Btrust Builders" is 427472757374204275696c64657273
     
-    lock_hex = hashlib.sha256("427472757374204275696c64657273".encode("utf-8")).digest().hex()
+    lock_hex = hashlib.sha256(preimage.encode("utf-8")).digest().hex()
     
     redeem_script = bytes.fromhex(
         "a8"
@@ -142,4 +142,5 @@ def spend_from_transaction(preimage, scriptPubKey, total_amount, amount_to_spend
     print(f" signed_tx: {signed_tx.hex()}")
     
 spend_from_transaction("Btrust Builders", "76a9143bc28d6d92d9073fb5e3adf481795eaf446bceed88ac", 2.001, 1.5, 0.5) 
+
             
